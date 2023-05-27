@@ -1,0 +1,31 @@
+
+
+
+.embedContainer { /*비율로 크기 자동 조정*/
+  width: 100%;
+  height: 0;
+  padding-bottom: 56.25%;
+  /*원하는 비율로 조정하세요 (16:9 비율의 경우 9 / 16 * 100 = 56.25)*/
+  position: relative;
+}
+.embedContainer iframe {
+  position:absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 3px solid  transparent;
+  border-radius: 3px;
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2); /* 그림자 효과 추가 */
+  background-image: linear-gradient(#fff, #fff), 
+  linear-gradient(to right, #00395d 0%,  #8f8f8c 100%);
+  background-origin: border-box;
+  background-clip: content-box, border-box;
+}
+@media screen and (max-width: 2000px) {
+  .embedContainer {
+    /* height: 100vh; */
+    width: 100%;
+    padding-bottom: 110%; /* 원하는 비율로 변경 */
+  }
+}
