@@ -1,20 +1,13 @@
-package dachaja.idsProject.domain.makePDF;
-
-import jakarta.validation.constraints.NotEmpty;
-import jdk.jfr.Enabled;
-import lombok.Data;
+/*
+package dachaja.idsProject.domain.makePDF.FlowDB;
 
 import javax.persistence.*;
 
-
-//model
-//@Data
 @Entity
-@Table(name = "idsInfo_01")
-public class IdsInfo {
+public class FlowData {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
     @Column(name = "Source IP")
@@ -36,11 +29,11 @@ public class IdsInfo {
     @Column(name = "Label(Detection Result)")
     private String Label; //benign or not
 
-    public IdsInfo(){
+    public FlowData(){
         super();
     }
 
-    public IdsInfo(String SrcIP, String DstIP, int SrcPort, int DstPort, int Protocol, String TimeStamp, String FlowDuration, String Label){
+    public FlowData(String SrcIP, String DstIP, int SrcPort, int DstPort, int Protocol, String TimeStamp, String FlowDuration, String Label){
         super();
         this.SrcIP = SrcIP;
         this.DstIP = DstIP;
@@ -123,4 +116,6 @@ public class IdsInfo {
     public void setLabel(String label) {
         Label = label;
     }
+
 }
+*/

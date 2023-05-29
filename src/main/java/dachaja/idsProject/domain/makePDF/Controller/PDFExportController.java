@@ -1,8 +1,7 @@
+/*
 package dachaja.idsProject.domain.makePDF.Controller;
 
 import com.itextpdf.text.DocumentException;
-import dachaja.idsProject.domain.makePDF.IdsInfo;
-import dachaja.idsProject.domain.makePDF.IdsInfoRepository;
 import dachaja.idsProject.domain.makePDF.Service.PDFGeneratorService;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,37 +19,32 @@ import java.util.List;
 
 @Controller
 public class PDFExportController {
-/*
-    @Autowired
-    IdsInfoRepository idsInfoRepository;
-
-    @GetMapping(value = "/pdf/idsInfo", produces = MediaType.APPLICATION_PDF_VALUE)
-    public ResponseEntity<InputStreamResource> idsInfoReport() throws IOException{
-        List<IdsInfo> idsInfos = (List<IdsInfo>) IdsInfoRepository.findAll();
-    }
-*/
-
     private final PDFGeneratorService pdfGeneratorService;
 
     public PDFExportController(PDFGeneratorService pdfGeneratorService) {
         this.pdfGeneratorService = pdfGeneratorService;
     }
 
-    @GetMapping("/pdf/generate")
-    public void generatePDF(HttpServletResponse response) throws DocumentException, IOException {
-        response.setContentType("application/pdf");
-        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd:hh:mm:ss");
-        String currentDateTime = dateFormat.format(new Date());
+    @Controller
+    public class PDFExportController {
 
+        private final PDFGeneratorService pdfGeneratorService;
 
+        public PDFExportController(PDFGeneratorService pdfGeneratorService) {
+            this.pdfGeneratorService = pdfGeneratorService;
+        }
 
-        String headerKey = "Content-Disposition";
-        String headerValue = "attachment; filename=pdf_"+currentDateTime+".pdf";
-        response.setHeader(headerKey, headerValue);
+        @GetMapping("/pdf/generate")
+        public void generatePDF(HttpServletResponse response) throws IOException {
+            response.setContentType("application/pdf");
+            DateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd:hh:mm:ss");
+            String currentDateTime = dateFormatter.format(new Date());
 
-        this.pdfGeneratorService.export(response);
+            String headerKey = "Content-Disposition";
+            String headerValue = "attachment; filename=pdf_" + currentDateTime + ".pdf";
+            response.setHeader(headerKey, headerValue);
 
-
-
-    }
+            this.pdfGeneratorService.export(response);
+        }
 }
+*/
