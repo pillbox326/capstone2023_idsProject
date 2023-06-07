@@ -14,7 +14,9 @@ import Typography from "@mui/material/Typography";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import logInSideImage from "../../assets/logInSideImage.jpg";
 import { useNavigate } from "react-router-dom";
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
+import Snackbar from "@mui/material/Snackbar";
+import Alert from "@mui/material/Alert";
 
 function Copyright(props) {
   return (
@@ -25,7 +27,11 @@ function Copyright(props) {
       {...props}
     >
       {"Copyright © "}
-      <Link color="inherit" href="https://github.com/PMiseon/capstone_demo" target="_blank">
+      <Link
+        color="inherit"
+        href="https://github.com/PMiseon/capstone_demo"
+        target="_blank"
+      >
         다차자
       </Link>{" "}
       {new Date().getFullYear()}
@@ -34,18 +40,16 @@ function Copyright(props) {
   );
 }
 
-// TODO remove, this demo shouldn't need to reset the theme.
-
 const defaultTheme = createTheme();
-
-// const defaultTheme = createTheme({ TODO: testing darkmode
-//   palette: {mode: 'dark',},
-// });
-
 
 export default function SignInSide({ setIsAuthenticated }) {
   const navigate = useNavigate(); // using useNavigate to change path
   const [error, setError] = React.useState("");
+  const [open, setOpen] = React.useState(false); // Snackbar를 열기 위한 상태
+
+  const handleClose = () => {
+    setOpen(false);
+  };
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -53,23 +57,18 @@ export default function SignInSide({ setIsAuthenticated }) {
     const email = data.get("email");
     const password = data.get("password");
 
-    setIsAuthenticated(true); // TODO: remove // pass login page!!!
-    navigate("/"); // TODO: remove // pass login page!!!
 
 
-    // vailation
-    if (email === "admin" && password === "password") {
-      console.log("로그인 성공"); // TODO: remove
+    // vailation  TODO: adopt DB
+    if (email === "admin" && password === "password@@") {
       setIsAuthenticated(true);
       navigate("/");
     } else {
-      console.log("로그인 실패"); // TODO: remove
       setError("Invalid email or password");
+      setOpen(true); // open Snackbar for error alert
     }
   };
 
-
-  //TODO: remove reset password, Sign up feature
   return (
     <ThemeProvider theme={defaultTheme}>
       <Grid container component="main" sx={{ height: "100vh" }}>
@@ -105,7 +104,8 @@ export default function SignInSide({ setIsAuthenticated }) {
               <LockOutlinedIcon />
             </Avatar>
             <Typography component="h1" variant="h5" align="center">
-              Welcome to <strong>다차자</strong> <br/>Intrusion Detection System
+              Welcome to <strong>다차자</strong> <br />
+              Intrusion Detection System
               <hr />
               <strong> Sign in</strong>
             </Typography>
@@ -139,11 +139,6 @@ export default function SignInSide({ setIsAuthenticated }) {
                 control={<Checkbox value="remember" color="primary" />}
                 label="Remember me"
               />
-              {error && (
-                <Typography color="error" variant="body2" sx={{ mt: 2 }}>
-                  {error}
-                </Typography>
-              )}
               <Button
                 type="submit"
                 fullWidth
@@ -152,23 +147,26 @@ export default function SignInSide({ setIsAuthenticated }) {
               >
                 Sign In
               </Button>
-              <Grid container>
-                <Grid item xs>
-                  <Link href="#" variant="body2">
-                    Forgot password?
-                  </Link>
-                </Grid>
-                <Grid item>
-                  <Link href="#" variant="body2">
-                    {"Don't have an account? Sign Up"}
-                  </Link>
-                </Grid>
-              </Grid>
-              <Copyright sx={{ mt: 5 }} />
+              <Copyright sx={{ mt: 4 }} />
             </Box>
           </Box>
         </Grid>
       </Grid>
+      {error && (
+        <Snackbar
+          open={open}
+          autoHideDuration={6000}
+          onClose={handleClose}
+          anchorOrigin={{ vertical: "top", horizontal: "right" }}
+        >
+          <Alert severity="error">
+            <strong>
+              {error}
+              {" - if you forgot password, please contact System Administrator"}
+            </strong>
+          </Alert>
+        </Snackbar>
+      )}
     </ThemeProvider>
   );
 }

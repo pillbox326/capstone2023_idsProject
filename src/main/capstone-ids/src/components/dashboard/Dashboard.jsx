@@ -9,10 +9,7 @@ import List from "@mui/material/List";
 import Typography from "@mui/material/Typography";
 import Divider from "@mui/material/Divider";
 import IconButton from "@mui/material/IconButton";
-import Badge from "@mui/material/Badge";
 import Container from "@mui/material/Container";
-import Grid from "@mui/material/Grid";
-import Paper from "@mui/material/Paper";
 import Link from "@mui/material/Link";
 import MenuIcon from "@mui/icons-material/Menu";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
@@ -30,7 +27,11 @@ function Copyright(props) {
       {...props}
     >
       {"Copyright © "}
-      <Link color="inherit" href="https://github.com/PMiseon/capstone_demo" target="_blank">
+      <Link
+        color="inherit"
+        href="https://github.com/PMiseon/capstone_demo"
+        target="_blank"
+      >
         다차자
       </Link>{" "}
       {new Date().getFullYear()}
@@ -85,21 +86,15 @@ const Drawer = styled(MuiDrawer, {
   },
 }));
 
-// TODO remove, this demo shouldn't need to reset the theme.
 const defaultTheme = createTheme();
-// const defaultTheme = createTheme({
-//   palette:{
-//     primary: {  main: '#F29D35'
-//   }, secondary:{
-//     main: '#D94B2B'
-//   }
-//   }
-// });
 
 export default function Dashboard({ setIsAuthenticated }) {
-  const [selectedButton, setSelectedButton] = React.useState("Home"); // state for selected button
-  const [iframeSrc, setIframeSrc] = React.useState("/old"); // state for iframe src TODO: Home 주소 추가
+  const [selectedButton, setSelectedButton] = React.useState("Dashboard"); // state for selected button
+  const [iframeSrc, setIframeSrc] = React.useState(
+    "http://localhost:5601/app/dashboards#/view/91485220-f8ad-11ed-98f3-4f3518f77aef?embed=true&_g=(refreshInterval:(pause:!t,value:5000),time:(from:now-15m,to:now))&_a=()&show-query-input=true&show-time-filter=true"
+  );
   const [open, setOpen] = React.useState(true); // state for open drawer
+
   const navigate = useNavigate();
   const handleLogout = () => {
     console.log("Logout Requested");
@@ -109,7 +104,8 @@ export default function Dashboard({ setIsAuthenticated }) {
   const toggleDrawer = () => {
     setOpen(!open);
   };
-  // 버튼 클릭 시 해당 버튼의 이름과 iframe 주소를 업데이트합니다
+
+  // 버튼 클릭 시 해당 버튼의 이름과 iframe 주소를 업데이트
   const handleButtonClick = (buttonName, iframeAddress) => {
     setSelectedButton(buttonName);
     setIframeSrc(iframeAddress);
@@ -148,12 +144,8 @@ export default function Dashboard({ setIsAuthenticated }) {
               sx={{ flexGrow: 1 }}
             >
               {selectedButton} {/* TopBar에 선택된 버튼 이름으로 표시*/}
-              {/* Dashboard   TopBar */}
             </Typography>
             <IconButton color="inherit" onClick={handleLogout}>
-              {/* <Badge badgeContent={4} color="secondary">
-              </Badge> */}
-              {/* Logout */}
               <LogoutIcon />
             </IconButton>
           </Toolbar>
@@ -174,32 +166,31 @@ export default function Dashboard({ setIsAuthenticated }) {
           <Divider />
           <List component="nav">
             <MainListItems handleButtonClick={handleButtonClick} />
-            {/* {mainListItems} */}
             <Divider sx={{ my: 1 }} />
           </List>
-          {/* 저작권 관련 문구 */}
-          {open &&(
-          <Typography
-            variant="caption"
-            sx={{
-              position: "absolute",
-              bottom: 0,
-              left: 0,
-              width: "100%",
-              textAlign: "center",
-              py: [2],
-            }}
-          >
-            &copy; 2023{" "}
-            <Link
-              color="inherit"
-              href="https://github.com/PMiseon/capstone_demo" 
-              target="_blank"
+          {/* 저작권 문구 */}
+          {open && (
+            <Typography
+              variant="caption"
+              sx={{
+                position: "absolute",
+                bottom: 0,
+                left: 0,
+                width: "100%",
+                textAlign: "center",
+                py: [2],
+              }}
             >
-              다차자
-            </Link>
-            . All rights reserved.
-          </Typography>
+              &copy; 2023{" "}
+              <Link
+                color="inherit"
+                href="https://github.com/PMiseon/capstone_demo" // TODO: update github repo
+                target="_blank"
+              >
+                다차자
+              </Link>
+              . All rights reserved.
+            </Typography>
           )}
         </Drawer>
         <Box
