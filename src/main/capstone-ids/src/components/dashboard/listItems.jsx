@@ -25,7 +25,7 @@ export function MainListItems({ handleButtonClick }) {
         onClick={() =>
           handleButtonClick(
             "Dashboard",
-            "http://localhost:5601/app/dashboards#/view/91485220-f8ad-11ed-98f3-4f3518f77aef?embed=true&_g=(refreshInterval:(pause:!f,value:5000),time:(from:now-15m,to:now))&_a=()&show-query-input=true&show-time-filter=true"
+            "http://localhost:5601/app/dashboards#/view/91485220-f8ad-11ed-98f3-4f3518f77aef?embed=true&_g=(refreshInterval:(pause:!f,value:5000),time:(from:now-15d,to:now))&_a=()&show-query-input=true&show-time-filter=true"
           )
         }
       >

@@ -91,7 +91,7 @@ const defaultTheme = createTheme();
 export default function Dashboard({ setIsAuthenticated }) {
   const [selectedButton, setSelectedButton] = React.useState("Dashboard"); // state for selected button
   const [iframeSrc, setIframeSrc] = React.useState(
-    "http://localhost:5601/app/dashboards#/view/91485220-f8ad-11ed-98f3-4f3518f77aef?embed=true&_g=(refreshInterval:(pause:!t,value:5000),time:(from:now-15m,to:now))&_a=()&show-query-input=true&show-time-filter=true"
+    "http://localhost:5601/app/dashboards#/view/91485220-f8ad-11ed-98f3-4f3518f77aef?embed=true&_g=(refreshInterval:(pause:!t,value:5000),time:(from:now-15d,to:now))&_a=()&show-query-input=true&show-time-filter=true"
   );
   const [open, setOpen] = React.useState(true); // state for open drawer
 
