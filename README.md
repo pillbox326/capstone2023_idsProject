@@ -26,4 +26,4 @@
 
 
 ## 창의경진대회 발표 영상
-https://github.com/PMiseon/capstone2023_idsProject/assets/106222104/76a8c4d7-550f-4958-bec2-a1e2410cc530
+https://github.com/pillbox326/capstone2023_idsProject/assets/78800080/6867b85f-e86d-4b63-8c2b-efa748121a94
