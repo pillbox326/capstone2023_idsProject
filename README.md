@@ -26,4 +26,7 @@
 
 
 ## 창의경진대회 발표 영상
-https://github.com/pillbox326/capstone2023_idsProject/assets/78800080/6867b85f-e86d-4b63-8c2b-efa748121a94
+
+
+https://github.com/pillbox326/capstone2023_idsProject/assets/78800080/aaad569d-5099-444e-acee-1e45b30aa042
+
