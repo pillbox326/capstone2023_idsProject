@@ -7,7 +7,8 @@
 - 보안 이벤트 및 네트워크 트래픽 관제 정보를 시각화하여 보여주는 모니터링 서비스르르 개발하여, 보안 전문가 이외의 인력도 보안 이벤트나 네트워크 트래픽 분석이 가능하게 한다.
 
 ## 개발환경 및 시스템 구조도 
-![image](https://github.com/PMiseon/capstone2023_idsProject/assets/106222104/85872f7b-6229-4744-8aeb-a09b6195835f)
+![structureImage](https://github.com/pillbox326/capstone2023_idsProject/assets/78800080/a8c13c2f-40b7-4733-8501-70db85559da4)
+
 - ELK (Elastic search, Kibana, filebeat, logstash) 
 - Suricata 
 - React 
